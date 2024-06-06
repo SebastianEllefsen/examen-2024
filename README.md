@@ -16,7 +16,9 @@ session id når en bruker er loget in
 
 # Brukerveiledning
 ### når du oppner siden vil du få valg om å logge in velg registrer for å lage en bruker og velg login hvis du har en bruker
-<img width="665" alt="Screenshot 2567-06-06 at 1 00 33 PM" src="https://github.com/SebastianEllefsen/examen-2024/assets/145965753/1b7385bc-54de-4838-aa18-db172258f846">
+<img width="700" alt="Screenshot 2567-06-06 at 1 09 15 PM" src="https://github.com/SebastianEllefsen/examen-2024/assets/145965753/cd5da31e-1dd3-49a6-a2da-65392c9b2906">
+
+
 
 
 # registrering
