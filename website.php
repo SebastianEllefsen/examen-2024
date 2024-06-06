@@ -1,22 +1,22 @@
 <?php
 session_start();
 
-// error reproting
+// Enable error reporting for debugging
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 if (!isset($_SESSION['username']) || !isset($_SESSION['session_id'])) {
-    // Redirect til velkomst side
+    // Redirect to login page if not logged in
     header("Location: login.html");
     exit();
 }
-// login data
+
 $dbhost = '172.20.128.68:3306';
 $dbuser = 'admin1';
 $dbpass = 'Troll123!';
 $dbname = 'login';
-// prøver å logg på server
+
 $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
 if ($conn->connect_error) {
@@ -28,21 +28,21 @@ $session_id = $_SESSION['session_id'];
 
 $sql = "SELECT session_id FROM users WHERE username = '$username'";
 $result = $conn->query($sql);
-// validering av session og bruker
+
 $valid_session = false;
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     if ($row['session_id'] === $session_id) {
         $valid_session = true;
     } else {
-        // Session ID matcher ikke lukk session
+        // Session ID does not match, invalidate the session
         session_unset();
         session_destroy();
         header("Location: login.html");
         exit();
     }
 } else {
-    // feil bruker lukk session
+    // User not found, invalidate the session
     session_unset();
     session_destroy();
     header("Location: login.html");

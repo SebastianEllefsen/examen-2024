@@ -1,46 +1,47 @@
 <?php
 session_start();
 
-// error login
+// Enable error reporting for debugging
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-// innlogning info til sql server
+// login detalier for sql server
 $dbhost = '172.20.128.68:3306';
 $dbuser = 'admin1';
 $dbpass = 'Troll123!';
 $dbname = 'login';
-// lager en kopling til serveren med login infoen
+
 $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
 if ($conn->connect_error) {
     die('Connection failed: ' . $conn->connect_error);
 }
-// sette bruker input til en tekst streng for å hindre sql injection
+// anti sql injection
 $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input_username = mysqli_real_escape_string($conn, $_POST['username']);
     $input_password = mysqli_real_escape_string($conn, $_POST['password']);
-// skjeker om det passordet og bruker navnet dit matcher databasen
+
     $sql = "SELECT username, password FROM users WHERE username = '$input_username'";
     $result = $conn->query($sql);
 
     if (!$result) {
         die('Error in SQL query: ' . $conn->error);
     }
-// hvis login detaliene finnes hent di 
+// skjekke om input data matcher med database
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $stored_password = $row['password'];
 
         if (password_verify($input_password, $stored_password)) {
-            $session_id = session_id(); // lag session ID
+            session_regenerate_id(true); // regenerer session ID
+            $session_id = session_id(); // lage ny session ID
             $update_sql = "UPDATE users SET session_id='$session_id' WHERE username='$input_username'";
             $conn->query($update_sql);
 
-            $_SESSION['username'] = $input_username; // lagre bruker session
-            $_SESSION['session_id'] = $session_id; // Slagre session ID i session
-            header("Location: website.php"); // Redirect velkomst side
+            $_SESSION['username'] = $input_username; // lagre username in session
+            $_SESSION['session_id'] = $session_id; // lagre session ID in session
+            header("Location: website.php"); // Redirect til website.php
             exit();
         } else {
             $message = "Invalid username or password. Please try again.";

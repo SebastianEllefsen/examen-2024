@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-// Error raportering
+// Enable error reporting 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-// login detaljer for sql
+
 $dbhost = '172.20.128.68:3306';
 $dbuser = 'admin1';
 $dbpass = 'Troll123!';
@@ -16,28 +16,29 @@ $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 if ($conn->connect_error) {
     die('Connection failed: ' . $conn->connect_error);
 }
-// sette bruker input til en tekst streng for å hindre sql injection
+
 $message = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_username = mysqli_real_escape_string($conn, $_POST['username']);
     $input_password = mysqli_real_escape_string($conn, $_POST['password']);
-    $hashed_password = password_hash($input_password, PASSWORD_DEFAULT); // hash passordet
+    $hashed_password = password_hash($input_password, PASSWORD_DEFAULT); // Hash the password
 
-    // skjekk om bruker navn er tatt
+    // skjekk om bruker navnet er tatt
     $sql = "SELECT * FROM users WHERE username = '$input_username'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         $message = "Username already taken. ";
     } else {
-        $session_id = session_id(); // lage session id
+        session_regenerate_id(true); // lag session ID
+        $session_id = session_id(); // lag ny session ID
         $sql = "INSERT INTO users (username, password, session_id) VALUES ('$input_username', '$hashed_password', '$session_id')";
         $result = $conn->query($sql);
 
         if ($result) {
-            $_SESSION['username'] = $input_username; // lagre bruker session
-            $_SESSION['session_id'] = $session_id; // lager id i session variabel
-            header("Location: website.php"); // sende deg til hoved nettside
+            $_SESSION['username'] = $input_username; // lagre username in session
+            $_SESSION['session_id'] = $session_id; // lagre session ID in session
+            header("Location: website.php"); // Redirect til website.php
             exit();
         } else {
             $message = "Error: " . $conn->error;
