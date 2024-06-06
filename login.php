@@ -1,7 +1,7 @@
 <?php
-$dbhost = '172.20.128.78:3306';
-$dbuser = 'adminusr';
-$dbpass = 'Skole123';
+$dbhost = '172.20.128.68:3306';
+$dbuser = 'root';
+$dbpass = 'Troll123!';
 $dbname = 'login';
 
 $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input_username = mysqli_real_escape_string($conn, $_POST['username']); // Prevent SQL Injection
     $input_password = mysqli_real_escape_string($conn, $_POST['password']); // Prevent SQL Injection
 
-    $sql = "SELECT usr, pas FROM login WHERE usr = '$input_username'"; // Changed to usr and pas
+    $sql = "SELECT username, password FROM login WHERE username = '$input_username'";
     $result = $conn->query($sql);
 
     if (!$result) {
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $stored_password = $row['pas']; // Changed to pas
+        $stored_password = $row['password'];
 
         if ($input_password === $stored_password) {
             echo "<script>window.location.href = 'website.php';</script>";
@@ -57,12 +57,18 @@ $conn->close();
             <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">Login</h2>
             <div class="mb-4">
                 <input type="text" name="username" placeholder="Username"
-                       class="w-full p-3 border rounded text-sm mb-3">
+                       class="w-full p-3 border rounded text-sm mb-3" required>
                 <input type="password" name="password" placeholder="Password"
-                       class="w-full p-3 border rounded text-sm">
+                       class="w-full p-3 border rounded text-sm" required>
             </div>
             <div class="mb-4 text-center text-red-500">
                 <?php echo $message; ?>
             </div>
             <button type="submit"
-                   
+                    class="w-full bg-blue-500 text-white p-3 rounded text-sm font-semibold hover:bg-blue-600">
+                Login
+            </button>
+        </form>
+    </div>
+</body>
+</html>
