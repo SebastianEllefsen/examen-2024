@@ -22,7 +22,7 @@ session id når en bruker er loget in
 
 
 # registrering
-### skriv in et bruker navn og passord hvis det er tiljenglig vil du få grønn tekst under som sier at du lagde en bruker 
+### skriv in et bruker navn og passord hvis det er tiljenglig vil det komme tekst under som sier at du lagde en bruker 
 <img width="753" alt="Screenshot 2567-06-06 at 1 02 24 PM" src="https://github.com/SebastianEllefsen/examen-2024/assets/145965753/c7b384e7-ea8b-4a98-8436-294def28b859">
 
 
