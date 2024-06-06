@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $_SESSION['username'] = $input_username; // Store username in session
             $_SESSION['session_id'] = $session_id; // Store session ID in session
-            header("Location: welcome.php"); // Redirect to welcome page
+            header("Location: website.php"); // Redirect to welcome page
             exit();
         } else {
             $message = "Invalid username or password. Please try again.";

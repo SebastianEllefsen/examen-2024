@@ -118,6 +118,7 @@ $conn->close();
 </head>
 <body>
     <div class="container">
+        <h2 class="title">Welcome</h2>
         <p class="message">Welcome, <?php echo htmlspecialchars($username); ?>!</p>
         <p class="session-info">Session ID: <?php echo htmlspecialchars($session_id); ?></p>
         <?php if ($valid_session): ?>
