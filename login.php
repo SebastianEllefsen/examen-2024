@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // Enable error reporting for debugging
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -32,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stored_password = $row['password'];
 
         if ($input_password === $stored_password) {
-            echo "<script>window.location.href = 'website.php';</script>";
+            $_SESSION['username'] = $input_username; // Store username in session
+            header("Location: website.php");
             exit();
         } else {
             $message = "Invalid username or password. Please try again.";
@@ -73,7 +76,7 @@ $conn->close();
                 Login
             </button>
             <div class="text-center mt-4">
-                <a href="reg.php" class="text-blue-500 hover:underline">Register</a>
+                <a href="reg.html" class="text-blue-500 hover:underline">Register</a>
             </div>
         </form>
     </div>
