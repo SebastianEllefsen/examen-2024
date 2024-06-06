@@ -1,6 +1,6 @@
 <?php
 $dbhost = '172.20.128.68:3306';
-$dbuser = 'admin1';
+$dbuser = 'root';
 $dbpass = 'Troll123!';
 $dbname = 'login';
 
@@ -45,29 +45,25 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        /* Additional styles can be placed here */
-    </style>
 </head>
-<body class="bg-gray-100">
-    <div class="flex items-center justify-center h-screen">
-        <form class="bg-white p-10 rounded-lg max-w-sm w-full shadow" method="post" action="">
-            <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">Login</h2>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded shadow-md max-w-md w-full">
+        <h2 class="text-2xl font-semibold mb-4">Login</h2>
+        <form action="" method="post">
             <div class="mb-4">
-                <input type="text" name="username" placeholder="Username"
-                       class="w-full p-3 border rounded text-sm mb-3" required>
-                <input type="password" name="password" placeholder="Password"
-                       class="w-full p-3 border rounded text-sm" required>
+                <label for="username" class="block text-sm font-medium text-gray-600">Username:</label>
+                <input type="text" name="username" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-gray-600">Password:</label>
+                <input type="password" name="password" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
             </div>
             <div class="mb-4 text-center text-red-500">
                 <?php echo $message; ?>
             </div>
-            <button type="submit"
-                    class="w-full bg-blue-500 text-white p-3 rounded text-sm font-semibold hover:bg-blue-600">
-                Login
-            </button>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Login</button>
         </form>
     </div>
 </body>
