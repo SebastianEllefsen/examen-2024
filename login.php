@@ -33,14 +33,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $row = $result->fetch_assoc();
         $stored_password = $row['password'];
 
-        if ($input_password === $stored_password) {
+        if (password_verify($input_password, $stored_password)) {
             $session_id = session_id(); // Generate session ID
             $update_sql = "UPDATE users SET session_id='$session_id' WHERE username='$input_username'";
             $conn->query($update_sql);
 
             $_SESSION['username'] = $input_username; // Store username in session
             $_SESSION['session_id'] = $session_id; // Store session ID in session
-            header("Location: website.php"); // Redirect to welcome page
+            header("Location: welcome.php"); // Redirect to welcome page
             exit();
         } else {
             $message = "Invalid username or password. Please try again.";
