@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-// Enable error reporting for debugging
+// Error raportering
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
+// login detaljer for sql server
 $dbhost = '172.20.128.68:3306';
 $dbuser = 'admin1';
 $dbpass = 'Troll123!';
@@ -16,24 +16,32 @@ $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 if ($conn->connect_error) {
     die('Connection failed: ' . $conn->connect_error);
 }
-
+// sette bruker input til en tekst streng for å hindre sql injection
 $message = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_username = mysqli_real_escape_string($conn, $_POST['username']);
     $input_password = mysqli_real_escape_string($conn, $_POST['password']);
     $hashed_password = password_hash($input_password, PASSWORD_DEFAULT); // Hash the password
-    $session_id = session_id(); 
 
-    $sql = "INSERT INTO users (username, password, session_id) VALUES ('$input_username', '$hashed_password', '$session_id')";
+    // skjekk om bruker navn er tatt
+    $sql = "SELECT * FROM users WHERE username = '$input_username'";
     $result = $conn->query($sql);
 
-    if ($result) {
-        $_SESSION['username'] = $input_username; 
-        $_SESSION['session_id'] = $session_id; 
-        header("Location: website.php"); 
-        exit();
+    if ($result->num_rows > 0) {
+        $message = "Username already taken. ";
     } else {
-        $message = "Error: " . $conn->error;
+        $session_id = session_id(); // lage session id
+        $sql = "INSERT INTO users (username, password, session_id) VALUES ('$input_username', '$hashed_password', '$session_id')";
+        $result = $conn->query($sql);
+
+        if ($result) {
+            $_SESSION['username'] = $input_username; // lagre bruker session
+            $_SESSION['session_id'] = $session_id; // lager id i session variabel
+            header("Location: website.php"); // sende deg til hoved nettside
+            exit();
+        } else {
+            $message = "Error: " . $conn->error;
+        }
     }
 }
 
