@@ -21,15 +21,16 @@ $message = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_username = mysqli_real_escape_string($conn, $_POST['username']);
     $input_password = mysqli_real_escape_string($conn, $_POST['password']);
-    $session_id = session_id(); // Generate session ID
+    $hashed_password = password_hash($input_password, PASSWORD_DEFAULT); // Hash the password
+    $session_id = session_id(); 
 
-    $sql = "INSERT INTO users (username, password, session_id) VALUES ('$input_username', '$input_password', '$session_id')";
+    $sql = "INSERT INTO users (username, password, session_id) VALUES ('$input_username', '$hashed_password', '$session_id')";
     $result = $conn->query($sql);
 
     if ($result) {
-        $_SESSION['username'] = $input_username; // Store username in session
-        $_SESSION['session_id'] = $session_id; // Store session ID in session
-        header("Location: welcome.php"); // Redirect to welcome page
+        $_SESSION['username'] = $input_username; 
+        $_SESSION['session_id'] = $session_id; 
+        header("Location: welcome.php"); 
         exit();
     } else {
         $message = "Error: " . $conn->error;
