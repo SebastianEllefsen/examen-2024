@@ -3,6 +3,8 @@ login system med sessions og kryptering
 # om prosjektet
 en login og registreningside som kjører på en web server og en database for å lagre bruker informasjon i et kryptert format med hashing.
 session id når en bruker er loget in
+## logg
+https://docs.google.com/document/d/1H8da6SyUhFeb5-Nm9MYkqH6HUmJnPIKJnkQFGy1beag/edit?usp=sharing
 
 
 
