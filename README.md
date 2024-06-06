@@ -16,7 +16,7 @@ session id når en bruker er loget in
 
 # Brukerveiledning
 ### når du oppner siden vil du få valg om å logge in velg registrer for å lage en bruker og velg login hvis du har en bruker
-<img width="700" alt="Screenshot 2567-06-06 at 1 09 15 PM" src="https://github.com/SebastianEllefsen/examen-2024/assets/145965753/cd5da31e-1dd3-49a6-a2da-65392c9b2906">
+<img width="753" alt="Screenshot 2567-06-06 at 1 09 15 PM" src="https://github.com/SebastianEllefsen/examen-2024/assets/145965753/cd5da31e-1dd3-49a6-a2da-65392c9b2906">
 
 
 
@@ -30,9 +30,9 @@ session id når en bruker er loget in
 
 # innlogining 
 ### skriv in dine bruker innlognings detalier og trykk login
-<img width="694" alt="Screenshot 2567-06-06 at 1 05 05 PM" src="https://github.com/SebastianEllefsen/examen-2024/assets/145965753/79dbb840-8f2e-4971-8e09-e118db858106">
+<img width="753" alt="Screenshot 2567-06-06 at 1 05 05 PM" src="https://github.com/SebastianEllefsen/examen-2024/assets/145965753/79dbb840-8f2e-4971-8e09-e118db858106">
 
 ### så hvis du skrev riktig passord kommer denne siden opp:
-<img width="709" alt="Screenshot 2567-06-06 at 1 05 55 PM" src="https://github.com/SebastianEllefsen/examen-2024/assets/145965753/aea7ce26-cb70-4ca4-933b-54457006e414">
+<img width="753" alt="Screenshot 2567-06-06 at 1 05 55 PM" src="https://github.com/SebastianEllefsen/examen-2024/assets/145965753/aea7ce26-cb70-4ca4-933b-54457006e414">
 
 ### da er du inne og kan bruke nettsiden
