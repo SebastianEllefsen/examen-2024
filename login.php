@@ -34,8 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stored_password = $row['password'];
 
         if ($input_password === $stored_password) {
-            session_regenerate_id(true); // Regenerate session ID to prevent session fixation attacks
-            $_SESSION['username'] = $input_username; // Store username in session
+            session_regenerate_id(true);
+            $_SESSION['username'] = $input_username; 
             header("Location: website.php");
             exit();
         } else {
