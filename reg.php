@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // Enable error reporting for debugging
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -19,13 +21,16 @@ $message = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_username = mysqli_real_escape_string($conn, $_POST['username']);
     $input_password = mysqli_real_escape_string($conn, $_POST['password']);
+    $session_id = session_id(); // Generate session ID
 
-    $sql = "INSERT INTO users (username, password) VALUES ('$input_username', '$input_password')";
+    $sql = "INSERT INTO users (username, password, session_id) VALUES ('$input_username', '$input_password', '$session_id')";
     $result = $conn->query($sql);
 
     if ($result) {
-        $message = "User added successfully! Redirecting back to the form in 5 seconds...";
-        header("Refresh: 5; URL=reg.html");
+        $_SESSION['username'] = $input_username; // Store username in session
+        $_SESSION['session_id'] = $session_id; // Store session ID in session
+        header("Location: welcome.php"); // Redirect to welcome page
+        exit();
     } else {
         $message = "Error: " . $conn->error;
     }
