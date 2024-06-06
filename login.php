@@ -1,6 +1,6 @@
 <?php
 $dbhost = '172.20.128.68:3306';
-$dbuser = 'root';
+$dbuser = 'admin1';
 $dbpass = 'Troll123!';
 $dbname = 'login';
 
