@@ -12,8 +12,8 @@ if ($conn->connect_error) {
 
 $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $input_username = mysqli_real_escape_string($conn, $_POST['username']); // Prevent SQL Injection
-    $input_password = mysqli_real_escape_string($conn, $_POST['password']); // Prevent SQL Injection
+    $input_username = mysqli_real_escape_string($conn, $_POST['username']);
+    $input_password = mysqli_real_escape_string($conn, $_POST['password']);
 
     $sql = "SELECT username, password FROM login WHERE username = '$input_username'";
     $result = $conn->query($sql);
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stored_password = $row['password'];
 
         if ($input_password === $stored_password) {
-            echo "<script>window.location.href = 'website.php';</script>";
+            header("Location: website.php");
             exit();
         } else {
             $message = "Invalid username or password. Please try again.";
