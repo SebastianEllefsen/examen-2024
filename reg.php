@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result) {
         $_SESSION['username'] = $input_username; 
         $_SESSION['session_id'] = $session_id; 
-        header("Location: welcome.php"); 
+        header("Location: website.php"); 
         exit();
     } else {
         $message = "Error: " . $conn->error;
