@@ -15,7 +15,6 @@ https://docs.google.com/document/d/1H8da6SyUhFeb5-Nm9MYkqH6HUmJnPIKJnkQFGy1beag/
 
 
 
-
 # Brukerveiledning
 ### når du oppner siden vil du få valg om å logge in velg registrer for å lage en bruker og velg login hvis du har en bruker
 <img width="753" alt="Screenshot 2567-06-06 at 1 09 15 PM" src="https://github.com/SebastianEllefsen/examen-2024/assets/145965753/cd5da31e-1dd3-49a6-a2da-65392c9b2906">
