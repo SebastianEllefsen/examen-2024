@@ -5,27 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        body {
+            background: url('https://mir-s3-cdn-cf.behance.net/project_modules/fs/6aed5e56730527.59ba033156f54.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #5d4b85;
+            margin-bottom: 1.5rem;
+        }
+        .input-field {
+            border: 2px solid #e0d6b8;
+            padding: 0.75rem;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        .custom-button {
+            background: #7e22ce;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 5px;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .custom-button:hover {
+            background: #b084cc;
+            transform: scale(1.05);
+        }
+        .link {
+            color: #7e22ce;
+            display: block;
+            margin-top: 1rem;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .link:hover {
+            text-decoration: underline;
+        }
+        .source {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="bg-white p-8 rounded shadow-md max-w-md w-full">
-        <h2 class="text-2xl font-semibold mb-4">Register</h2>
+<body>
+    <div class="container">
+        <h2 class="title">Register</h2>
         <form action="reg.php" method="post">
-            <div class="mb-4">
-                <label for="username" class="block text-sm font-medium text-gray-600">Username:</label>
-                <input type="text" name="username" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
-            </div>
-            <div class="mb-4">
-                <label for="password" class="block text-sm font-medium text-gray-600">Password:</label>
-                <input type="password" name="password" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
-            </div>
-            <div class="mb-4 text-center text-green-500">
-                <!-- Success message -->
-            </div>
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Register</button>
-            <div class="text-center mt-4">
-                <a href="login.html" class="text-blue-500 hover:underline">Login</a>
-            </div>
+            <input type="text" name="username" placeholder="Username" class="input-field" required>
+            <input type="password" name="password" placeholder="Password" class="input-field" required>
+            <button type="submit" class="custom-button">Register</button>
         </form>
+        <a href="login.html" class="link">Login</a>
+    </div>
+    <div class="source">
+        <a href="https://www.behance.net/gallery/56730527/Free-Spring-Wallpapers" target="_blank" rel="noopener noreferrer">Image Source</a>
     </div>
 </body>
 </html>

@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stored_password = $row['password'];
 
         if ($input_password === $stored_password) {
+            session_regenerate_id(true); // Regenerate session ID to prevent session fixation attacks
             $_SESSION['username'] = $input_username; // Store username in session
             header("Location: website.php");
             exit();
@@ -72,13 +73,3 @@ $conn->close();
             <div class="mb-4 text-center text-red-500">
                 <?php echo $message; ?>
             </div>
-            <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded text-sm font-semibold hover:bg-blue-600">
-                Login
-            </button>
-            <div class="text-center mt-4">
-                <a href="reg.html" class="text-blue-500 hover:underline">Register</a>
-            </div>
-        </form>
-    </div>
-</body>
-</html>

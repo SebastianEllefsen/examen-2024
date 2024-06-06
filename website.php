@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['username'])) {
     // Redirect to login page if not logged in
     header("Location: login.html");
@@ -7,6 +8,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 $username = $_SESSION['username'];
+$session_id = session_id();
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +23,7 @@ $username = $_SESSION['username'];
     <div class="bg-white p-8 rounded shadow-md max-w-md w-full text-center">
         <h2 class="text-2xl font-semibold mb-4">Welcome, <?php echo htmlspecialchars($username); ?>!</h2>
         <p class="text-gray-600">You have successfully logged in.</p>
+        <p class="text-gray-600">Session ID: <?php echo htmlspecialchars($session_id); ?></p>
     </div>
 </body>
 </html>
