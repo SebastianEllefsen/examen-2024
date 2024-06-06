@@ -58,6 +58,9 @@ $conn->close();
                 <?php echo $message; ?>
             </div>
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Register</button>
+            <div class="text-center mt-4">
+                <a href="login.php" class="text-blue-500 hover:underline">Login</a>
+            </div>
         </form>
     </div>
 </body>

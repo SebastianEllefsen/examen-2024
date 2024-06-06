@@ -72,6 +72,9 @@ $conn->close();
             <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded text-sm font-semibold hover:bg-blue-600">
                 Login
             </button>
+            <div class="text-center mt-4">
+                <a href="reg.php" class="text-blue-500 hover:underline">Register</a>
+            </div>
         </form>
     </div>
 </body>
