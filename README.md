@@ -32,4 +32,5 @@ session id når en bruker er loget in
 
 ### så hvis du skrev riktig passord kommer denne siden opp:
 <img width="709" alt="Screenshot 2567-06-06 at 1 05 55 PM" src="https://github.com/SebastianEllefsen/examen-2024/assets/145965753/aea7ce26-cb70-4ca4-933b-54457006e414">
+
 ### da er du inne og kan bruke nettsiden
